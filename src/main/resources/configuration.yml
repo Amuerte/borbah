@@ -1,11 +1,9 @@
-appName: ${DW_DEFAULT_NAME:-Borbah}
+#appName: ${DW_DEFAULT_NAME:-Borbah}
 
 # Database settings.
-#database:
-#  driverClass: org.h2.Driver
-#  user: sa
-#  password: sa
-#  url: jdbc:h2:./target/example
+database:
+  region: eu-west-1
+  endpoint: http://localhost:4569
 
 # use the simple server factory if you only want to run on a single port
 #server:

@@ -3,13 +3,18 @@ package org.amuerte.gaming
 import io.dropwizard.Application
 import io.dropwizard.setup.Environment
 import org.amuerte.gaming.infrastructure.injection.DaggerBorbahComponent
+import org.amuerte.gaming.infrastructure.injection.DynamoDbModule
 
 class BorbahApplication : Application<BorbahConfiguration>() {
 
     override fun run(configuration: BorbahConfiguration, environment: Environment) {
-        println("Running ${configuration.appName}!")
 
-        val component = DaggerBorbahComponent.builder().build()
+        // Dagger graph object initialisation
+        val component = DaggerBorbahComponent.builder()
+                .dynamoDbModule(DynamoDbModule(configuration.database))
+                .build()
+
+        // Resources registration
         environment.jersey().register(component.playerResource())
     }
 }

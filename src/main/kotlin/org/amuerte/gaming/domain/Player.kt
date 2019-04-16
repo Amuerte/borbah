@@ -2,8 +2,10 @@ package org.amuerte.gaming.domain
 
 import java.time.Instant
 
+
 data class Player(
     val id: String,
+    val idBattle: String,
     val login: String,
     val score: Int = 0,
     val creationDate: Instant = Instant.now(),

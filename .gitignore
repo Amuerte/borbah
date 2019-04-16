@@ -72,6 +72,7 @@ local.properties
 *.iws
 /out/
 .idea_modules/
+.kotlintest/
 
 # osx files
 .DS_Store
