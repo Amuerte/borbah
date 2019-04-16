@@ -45,3 +45,12 @@ tasks.withType<GenerateTask> {
     invokerPackage.set("org.amuerte.gaming.invoker")
     modelPackage.set("org.amuerte.gaming.model")
 }
+
+tasks.register<GenerateTask>("generationDoc") {
+    generatorName.set("html2")
+    outputDir.set("$buildDir/generated/openapi/doc")
+}
+
+openApiValidate() {
+    inputSpec.set("$rootDir/src/main/resources/api/players-api.yml")
+}

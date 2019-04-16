@@ -1,0 +1,95 @@
+openapi: 3.0.1
+info:
+  title: Borbah API
+  version: v1
+servers:
+  - url: http://localhost/v1
+paths:
+  /players/{loginPlayer}:
+    get:
+      summary: Return all informations about a player
+      description: Return all informations about a player
+      operationId: viewPlayer
+      parameters:
+        - name: loginPlayer
+          in: path
+          description: player's login
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: TODO
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayerDto'
+    post:
+      summary: Create Player with name loginPlayer
+      description: Create Player with name loginPlayer
+      operationId: createPlayer
+      parameters:
+        - name: loginPlayer
+          in: path
+          description: player's login
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: TODO
+          content:
+            application/json:
+              schema:
+                type: string
+  /players:
+    get:
+      summary: Return all informations about a player
+      description: Return all informations about a player
+      operationId: viewAllPlayers
+      parameters:
+        - name: loginPlayer
+          in: path
+          description: player's login
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: TODO
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PlayerDto'
+    delete:
+      summary: Delete all players
+      description: Delete all players
+      operationId: deletePlayers
+      responses:
+        200:
+          description: TODO
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  schemas:
+    PlayerDto:
+      type: object
+      properties:
+        idPlayer:
+          type: string
+          description: Player's id
+        login:
+          type: string
+          description: Player's login
+        score:
+          type: integer
+          description: Player's score
+        lastUpdate:
+          type: string
+          description: Player' score last update
+          format: date-time
+      description: Player modelisation
