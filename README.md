@@ -1,3 +1,5 @@
+[![travis](https://travis-ci.org/Amuerte/borbah.svg?branch=master)](https://travis-ci.org/Amuerte/borbah)
+
 ![logo](http://www.thrillingdetective.com/images/borbah.jpg)
 
 borbah
