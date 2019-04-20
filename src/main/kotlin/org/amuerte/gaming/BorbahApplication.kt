@@ -16,5 +16,8 @@ class BorbahApplication : Application<BorbahConfiguration>() {
 
         // Resources registration
         environment.jersey().register(component.playerResource())
+
+        //HealthCheck Registration
+        environment.healthChecks().register("dynamoDb", component.dynamoDbHealthCheck())
     }
 }

@@ -1,9 +1,8 @@
 package org.amuerte.gaming.infrastructure.injection
 
-import dagger.BindsInstance
 import dagger.Component
-import org.amuerte.gaming.DbConfiguration
 import org.amuerte.gaming.infrastructure.PlayerResource
+import org.amuerte.gaming.infrastructure.healthcheck.DynamoDbHealthCheck
 import javax.inject.Singleton
 
 
@@ -16,6 +15,8 @@ import javax.inject.Singleton
 interface BorbahComponent {
 
     fun playerResource(): PlayerResource
+
+    fun dynamoDbHealthCheck(): DynamoDbHealthCheck
 
     @Component.Builder
     interface Builder {
