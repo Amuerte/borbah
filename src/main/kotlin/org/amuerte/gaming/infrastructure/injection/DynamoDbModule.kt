@@ -6,6 +6,7 @@ import org.amuerte.gaming.DbConfiguration
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient
 import java.net.URI
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
@@ -18,5 +19,11 @@ class DynamoDbModule constructor(val configuration: DbConfiguration) {
                 .region(Region.of(configuration.region))
                 .endpointOverride(URI.create(configuration.endpoint))
                 .build();
+    }
+
+    @Provides
+    @Singleton
+    fun dbConfiguration(): DbConfiguration {
+        return configuration
     }
 }

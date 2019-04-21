@@ -8,5 +8,6 @@ class BorbahConfiguration(@JsonProperty("database") val database: DbConfiguratio
 }
 
 class DbConfiguration(@JsonProperty("region") val region: String,
-                      @JsonProperty("endpoint") val endpoint: String
+                      @JsonProperty("endpoint") val endpoint: String,
+                      @JsonProperty("pagesize") val pagesize: Int
 )
