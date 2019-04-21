@@ -1,5 +1,6 @@
 package org.amuerte.gaming.infrastructure.repository
 
+import org.amuerte.gaming.DbConfiguration
 import org.amuerte.gaming.domain.Player
 import org.amuerte.gaming.domain.PlayerRepository
 import org.amuerte.gaming.infrastructure.errors.BusinessException
@@ -17,7 +18,7 @@ import javax.inject.Inject
 import kotlin.collections.HashMap
 
 
-class DynamoDbPlayerRepositoryImpl @Inject constructor(var dynamoDbClient: DynamoDbClient) : PlayerRepository {
+class DynamoDbPlayerRepositoryImpl @Inject constructor(var dynamoDbClient: DynamoDbClient, val dbConfig: DbConfiguration) : PlayerRepository {
 
     companion object {
         val TABLE_PLAYERS: String = "players"
@@ -115,10 +116,10 @@ class DynamoDbPlayerRepositoryImpl @Inject constructor(var dynamoDbClient: Dynam
                 ))
                 .scanIndexForward(sortAsc)
                 .select(Select.ALL_ATTRIBUTES)
-                .build()
+                .limit(dbConfig.pagesize)
 
         return handleRequest {
-            dynamoDbClient.query(queryRequest)
+            dynamoDbClient.query(queryRequest.build())
                     .items()
                     .map { mapper(it) }
                     .toList()
