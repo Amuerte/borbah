@@ -13,5 +13,21 @@ borbah
 ## Build
 
 ```bash
-gradle clean build shadowJar
+gradlew clean build shadowJar
+run.sh
 ```
+
+## More coming soon : 
+
+### Core
+- Validation des parametres de PlayerResource
+- Test PlayerResource
+- Pagination sur findAll (-> revoir Index gsi ?)
+- Test Integ du repository (Conflit kotlin-test vs Runner Junit 5)
+
+### Transverse
+- authentication
+- metrics
+- https (merge branch + variable env dans script run.sh)
+- configuration client http aws sdk
+- swagger2markup api doc generation for github
