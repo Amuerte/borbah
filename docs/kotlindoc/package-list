@@ -1,0 +1,12 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+
+org.amuerte.gaming
+org.amuerte.gaming.application.dto
+org.amuerte.gaming.application.service
+org.amuerte.gaming.domain
+org.amuerte.gaming.infrastructure
+org.amuerte.gaming.infrastructure.errors
+org.amuerte.gaming.infrastructure.healthcheck
+org.amuerte.gaming.infrastructure.injection
+org.amuerte.gaming.infrastructure.repository

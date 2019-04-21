@@ -1,4 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
@@ -9,15 +10,19 @@ val version = "1.0.0-SNAPSHOT"
 plugins {
     val kotlinVersion = "1.3.21"
     val shadowJarVersion = "5.0.0"
+    val openApiPluginVersion = "4.0.0-beta3"
+    val dokkaVersion="0.9.18"
 
     kotlin("jvm") version kotlinVersion
     kotlin("kapt") version kotlinVersion
     id("com.github.johnrengelman.shadow") version shadowJarVersion
-    id("org.openapi.generator") version "4.0.0-beta3"
+    id("org.openapi.generator") version openApiPluginVersion
+    id("org.jetbrains.dokka") version dokkaVersion
 }
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 sourceSets["test"].withConvention(KotlinSourceSet::class) {
@@ -67,6 +72,10 @@ tasks.withType<GenerateTask> {
     apiPackage.set("org.amuerte.gaming.api")
     invokerPackage.set("org.amuerte.gaming.invoker")
     modelPackage.set("org.amuerte.gaming.model")
+}
+
+tasks.withType<DokkaTask> {
+    outputFormat = "gfm"
 }
 
 tasks.register<GenerateTask>("generationDoc") {
