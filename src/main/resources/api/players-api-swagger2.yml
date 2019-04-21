@@ -1,0 +1,136 @@
+swagger: '2.0'
+info:
+  version: 'v1'
+  title: Borbah API
+  contact: {}
+host: localhost
+basePath: /v1
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /players:
+    get:
+      description: Return all player's for the given battle id
+      summary: findAll
+      operationId: PlayersGet
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: battle
+        in: query
+        required: true
+        type: string
+        description: battle's id
+      - name: sortAsc
+        in: query
+        required: false
+        type: boolean
+        description: Should the players be sort in score ascending order
+      responses:
+        200:
+          description: Array of players
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PlayerDto'
+          headers: {}
+    post:
+      description: Create Player with name loginPlayer
+      summary: create
+      operationId: PlayersPost
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: login
+        in: query
+        required: true
+        type: string
+        description: player's login
+      - name: battle
+        in: query
+        required: true
+        type: string
+        description: the battle id to join
+      responses:
+        204:
+          description: Create Ok
+          headers: {}
+    delete:
+      description: Delete all players
+      summary: delete
+      operationId: PlayersDelete
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        204:
+          description: Delete ok
+          headers: {}
+  /players/{idPlayer}:
+    get:
+      description: Return all informations about a player
+      summary: findById
+      operationId: PlayersByIdPlayerGet
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: idPlayer
+        in: path
+        required: true
+        type: string
+        description: player's id
+      responses:
+        200:
+          description: Return the player with idPlayer
+          schema:
+            $ref: '#/definitions/PlayerDto'
+          headers: {}
+        404:
+          description: No player found
+          schema: {}
+    put:
+      description: Update player's score
+      summary: update
+      operationId: PlayersByIdPlayerPut
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: idPlayer
+        in: path
+        required: true
+        type: string
+        description: player's id
+      responses:
+        204:
+          description: Update ok
+          headers: {}
+definitions:
+  PlayerDto:
+    title: PlayerDto
+    description: Player modelisation
+    type: object
+    properties:
+      idPlayer:
+        description: Player's id
+        type: string
+      login:
+        description: Player's login
+        type: string
+      score:
+        description: Player's score
+        type: integer
+        format: int32
+      lastUpdate:
+        description: Player' score last update
+        type: string
+        format: date-time
+tags: []
