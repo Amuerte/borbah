@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "e668c57e-2d71-4f93-834c-8739490af25d",
+		"name": "Borbah",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Players Sorted",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/players?battle=battle_1&sortAsc=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"players"
+					],
+					"query": [
+						{
+							"key": "battle",
+							"value": "battle_1"
+						},
+						{
+							"key": "sortAsc",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Player Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/players/4cc95e92-aa6b-49e7-a78c-fd5d61994d70",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"players",
+						"4cc95e92-aa6b-49e7-a78c-fd5d61994d70"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAll",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/players/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"players",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create player",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/players?login=toto1&battle=battle_1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"players"
+					],
+					"query": [
+						{
+							"key": "login",
+							"value": "toto1"
+						},
+						{
+							"key": "battle",
+							"value": "battle_1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update score",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/players/bd5b34f9-b681-44f5-9f92-8117f502ff2d?score=13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"players",
+						"bd5b34f9-b681-44f5-9f92-8117f502ff2d"
+					],
+					"query": [
+						{
+							"key": "score",
+							"value": "13"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
