@@ -31,8 +31,8 @@ class PlayerServiceImpl @Inject constructor(val playerRepository: PlayerReposito
         )
     }
 
-    override fun findAll(idBattle: String, sortAsc: Boolean): Iterable<PlayerDto> {
-        return playerRepository.findAll(idBattle, sortAsc).map { mapper(it) };
+    override fun findAll(idBattle: String, sortAsc: Boolean, fromId: String?): Iterable<PlayerDto> {
+        return playerRepository.findAll(idBattle, sortAsc, fromId).map { mapper(it) };
     }
 
     private fun mapper(p: Player) = PlayerDto(p.id, p.login, p.score)

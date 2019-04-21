@@ -105,7 +105,7 @@ class DynamoDbPlayerRepositoryImpl @Inject constructor(var dynamoDbClient: Dynam
         }
     }
 
-    override fun findAll(idBattle: String, sortAsc: Boolean): List<Player> {
+    override fun findAll(idBattle: String, sortAsc: Boolean, fromId: String?): List<Player> {
         val queryRequest = QueryRequest.builder()
                 .tableName(TABLE_PLAYERS)
                 .indexName(SCORE_GSINDEX_NAME)
@@ -117,6 +117,14 @@ class DynamoDbPlayerRepositoryImpl @Inject constructor(var dynamoDbClient: Dynam
                 .scanIndexForward(sortAsc)
                 .select(Select.ALL_ATTRIBUTES)
                 .limit(dbConfig.pagesize)
+
+        if (!fromId.isNullOrBlank()) {
+            queryRequest.exclusiveStartKey(Collections.singletonMap(
+                    "id",
+                    AttributeValue.builder().s(fromId).build()
+            )
+            )
+        }
 
         return handleRequest {
             dynamoDbClient.query(queryRequest.build())

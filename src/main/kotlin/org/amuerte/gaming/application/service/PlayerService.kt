@@ -29,7 +29,7 @@ interface PlayerService {
      *
      * @return A list of players sorted by their score
      */
-    fun findAll(idBattle: String, sortAsc: Boolean): Iterable<PlayerDto>
+    fun findAll(idBattle: String, sortAsc: Boolean, fromId: String ?): Iterable<PlayerDto>
 
     /**
      * Return a player identified by [id]

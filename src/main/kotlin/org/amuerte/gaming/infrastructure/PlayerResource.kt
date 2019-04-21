@@ -25,9 +25,10 @@ class PlayerResource @Inject constructor(val playerService: PlayerService) {
 
     @GET
     @Path("/")
-    fun findAll(@QueryParam("battle") idBattle: String, @QueryParam("sortAsc") sortAscParam: Boolean?): Response {
+    fun findAll(@QueryParam("battle") idBattle: String, @QueryParam("sortAsc") sortAscParam: Boolean?,
+                @QueryParam("from") from: String ?): Response {
         val sortAsc: Boolean = sortAscParam ?: false
-        return handleResponse { playerService.findAll(idBattle, sortAsc) }
+        return handleResponse { playerService.findAll(idBattle, sortAsc, from) }
     }
 
     @DELETE
